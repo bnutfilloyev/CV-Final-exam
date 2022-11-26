@@ -95,13 +95,10 @@ For a better introduction to the code, check out the [utils.py](eye_detector/uti
 
 To predict the eyes, I used a custom model trained with [own dataset](eye_detector/datasets/dataset.csv)
 
-**Confusion matrix:**
+| **Confusion matrix:**                         | **Classification report:**            |
+|-----------------------------------------------|---------------------------------------|
+| ![](assets/eye_metrics/confusion_metrics.png) | ![](assets/eye_metrics/balance.png)   |
 
-![](assets/eye_metrics/confusion_metrics.png)
-
-**Classification report:**
-
-![](assets/eye_metrics/balance.png)
 
 **Results:**
 
@@ -125,6 +122,10 @@ RS_REAL.yaml for training the model:
 ```yaml
 names: [ 'eye', 'nose', 'mouth' ]
 ```
+
+### Data Labeling
+
+![](assets/occlusion_metrics/labeling.jpeg)
 
 - For more results check out the [assets/occlusion_metrics](assets/occlusion_metrics) folder.
 
