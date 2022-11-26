@@ -22,11 +22,7 @@ def check_face_validity(predictions, image_processed, image_original):
             if face_part[-1] not in result_dict:
                 result_dict[face_part[-1]] = []
             result_dict[face_part[-1]].append(list(face_part))
-    valid_options = {
-        0: 2,
-        1: 1,
-        2: 1
-    }
+    valid_options = {0: 2, 1: 1, 2: 1}
 
     for face_part, quant in valid_options.items():
         if face_part in result_dict:
