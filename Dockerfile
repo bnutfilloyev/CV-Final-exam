@@ -10,10 +10,10 @@ RUN apt-get update -y && \
 
 COPY requirements.txt /app/requirements.txt
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
 COPY . ./
 
 ENV PYTHONPATH app
 
-ENTRYPOINT ["python", "train.py"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
