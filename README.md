@@ -9,11 +9,27 @@ CV-Final-exam
     part 3: Occulusion Detection
 
 ### Face Detection part
-    I used the MTCNN face detector
+I used the MTCNN face detector
 
 ### Eye Detection part
-    I used CNN model for eye detection
+I used CNN model for eye detection
 
 ### Occulusion Detection part
-    I used YOLOv5 model for occulusion detection
+I used YOLOv5 model for occulusion detection
     
+# Convert Keras model to ONNX
+```shell
+python -m tf2onnx.convert --keras <input model>.h5  --output  <output model>.onnx
+```
+
+# Running app in the docker container
+```shell
+    docker-compose up --build
+```
+
+# Running python script
+```shell
+    $ conda create -n cv python=3.9 -y && conda activate cv
+    $ pip install -r requirements.txt
+    $ uvicorn main:app --reload
+```

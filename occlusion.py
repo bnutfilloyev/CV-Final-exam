@@ -1,9 +1,10 @@
 import cv2
 import numpy as np
-from utils.augmentations import letterbox
 import torch
-from utils.torch_utils import select_device
+
 from models.common import DetectMultiBackend
+
+from utils.augmentations import letterbox
 from utils.general import check_img_size, non_max_suppression, scale_boxes
 
 
@@ -40,10 +41,6 @@ def check_face_validity(predictions, image_processed, image_original):
     return True, result_dict
 
 
-def read_image(image_path):
-    return cv2.imread(image_path)
-
-
 def prep_image(image, device):
     image = letterbox(image, 640, stride=32, auto=True)[0]  # padded resize
     image = image.transpose((2, 0, 1))[::-1]  # HWC to CHW, BGR to RGB
@@ -65,23 +62,3 @@ def prep_model(weights, device, data):
 
     model.warmup(imgsz=(1, 3, *image_size))  # warmup
     return model
-
-
-def main():
-    weights = 'weights/real_120.pt'
-    device = select_device()
-    model = prep_model(weights, device, data='RS_REAL.yaml')  # data used for class names only
-
-    # image_path = 'data/data/Photo/0a9c53710912401e9ad2d47273459ec6.jpeg'
-    image_path = '../datasets/3data/1da8964ef3104f96b216a6db31a1dbfc.png'
-    image_original = read_image(image_path)
-    image_processed = prep_image(image_original, device)
-
-    predictions = detect(image_processed, model)
-    validity, results = check_face_validity(predictions, image_processed, image_original)
-
-    print(validity, results)
-
-
-if __name__ == '__main__':
-    main()
