@@ -120,6 +120,12 @@ For occlusion detection, I used the [YOLOv5](https://github.com/ultralytics/yolo
 **Results after training the model for 120 epoch:**
 ![](assets/occlusion_metrics/val_batch2_pred.jpg)
 
+RS_REAL.yaml for training the model:
+
+```yaml
+names: [ 'eye', 'nose', 'mouth' ]
+```
+
 - For more results check out the [assets/occlusion_metrics](assets/occlusion_metrics) folder.
 
 # Authors
